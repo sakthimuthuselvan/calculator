@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .calculater{
+            width: 400px;
+            height: 550px;
+            background-color: rgb(38, 38, 68);
+           margin-left: 450px;
+           border-radius: 10px;
+           position: relative;
+        }
+        h1{
+            color: aliceblue;
+            text-align: center;
+            font-size: 30px;
+        }
+        input{
+            background-color: rgb(149, 173, 175);
+            border: none;
+            width: 350px;
+            height: 70px;
+            text-align: right;
+            margin-top: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        .row-1,.row-2,.row-3,.row-4,.row-5{
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        .row-1 button,.row-2 button,.row-3 button,.row-4 button,.row-5 button{
+            width: 80px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 5px;
+            border: none;
+            margin-left: 5px;
+        }
+        .row-2 button{
+            width: 80px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 5px;
+            border: none;
+        }
+        .equalto button{
+            width:60px;
+            height: 250px;
+            border: none;
+            font-size: 25px;
+            position: absolute;
+            top: 235px;
+            left: 315px;
+            border-radius: 5px;
+        }
+        .calculater button:hover{
+            background-color: rgb(134, 161, 172);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="calculater">
+            <h1>calculator</h1>
+            <input type="" id="input" placeholder="0 0 0 0 0" readonly>
+            <div class="row-1">
+                <button onclick="operatorfunction('+')">+</button>
+                <button onclick="operatorfunction('-')">-</button>
+                <button onclick="operatorfunction('*')">*</button>
+                <button onclick="operatorfunction('/')">/</button>
+            </div>
+            <div class="row-2">
+                <button onclick="numbers(1)">1</button>
+                <button onclick="numbers(2)">2</button>
+                <button onclick="numbers(3)">3</button>
+            </div>
+            <div class="row-3">
+                <button onclick="numbers(4)">4</button>
+                <button onclick="numbers(5)">5</button>
+                <button onclick="numbers(6)">6</button>
+            </div>
+            <div class="row-4">
+                <button onclick="numbers(7)">7</button>
+                <button onclick="numbers(8)">8</button>
+                <button onclick="numbers(9)">9</button>
+            </div>
+            <div class="row-5">
+                <button onclick="numbers(0)">0</button>
+                <button onclick="numbers()">.</button>
+                <button onclick="clearfunction()">AC</button>
+            </div>
+            <div class="equalto">
+                <button onclick="equalto()">=</button>
+            </div>
+        </div>
+    </section>
+
+   
+    <script>
+        let display=document.getElementById("input");
+
+        let num=0;
+        let add="";
+        let array=[];
+        function numbers(num){
+                display.value +=num;
+                add+=num;
+            console.log(add)
+        }
+        function operatorfunction(operator){
+            display.value+=operator;
+            
+            if(add!=""){
+               console.log( array.push(add))
+            }
+           //add="";
+           array.push(operator)
+            
+        }
+       
+    
+        function clearfunction(){
+            display.value='';
+            
+        }
+    </script>
+</body>
+</html>
