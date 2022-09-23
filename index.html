@@ -68,6 +68,7 @@
 </head>
 <body>
     <section>
+    
         <div class="calculater">
             <h1>calculator</h1>
             <input type="" id="input" placeholder="0 0 0 0 0" readonly>
@@ -78,22 +79,22 @@
                 <button onclick="operatorfunction('/')">/</button>
             </div>
             <div class="row-2">
-                <button onclick="numbers(1)">1</button>
-                <button onclick="numbers(2)">2</button>
-                <button onclick="numbers(3)">3</button>
+                <button onclick="numbers('1')">1</button>
+                <button onclick="numbers('2')">2</button>
+                <button onclick="numbers('3')">3</button>
             </div>
             <div class="row-3">
-                <button onclick="numbers(4)">4</button>
-                <button onclick="numbers(5)">5</button>
-                <button onclick="numbers(6)">6</button>
+                <button onclick="numbers('4')">4</button>
+                <button onclick="numbers('5')">5</button>
+                <button onclick="numbers('6')">6</button>
             </div>
             <div class="row-4">
-                <button onclick="numbers(7)">7</button>
-                <button onclick="numbers(8)">8</button>
-                <button onclick="numbers(9)">9</button>
+                <button onclick="numbers('7')">7</button>
+                <button onclick="numbers('8')">8</button>
+                <button onclick="numbers('9')">9</button>
             </div>
             <div class="row-5">
-                <button onclick="numbers(0)">0</button>
+                <button onclick="numbers('0')">0</button>
                 <button onclick="numbers()">.</button>
                 <button onclick="clearfunction()">AC</button>
             </div>
@@ -107,9 +108,9 @@
     <script>
         let display=document.getElementById("input");
 
-        let num=0;
+        // let num=0;
         let add="";
-        let array=[];
+        let arr=[];
         function numbers(num){
                 display.value +=num;
                 add+=num;
@@ -119,16 +120,91 @@
             display.value+=operator;
             
             if(add!=""){
-               console.log( array.push(add))
+             arr.push(add)
             }
-           //add="";
-           array.push(operator)
-            
+           arr.push(operator)
+           console.log(arr)
+           add=""
+   
         }
+       
+
+        function equalto(){
+            arr.push(add)
+            console.log(arr)
+            // let a;
+            let b=[]
+            for(i=0; i<arr.length; i++){
+            switch(arr[i]){
+
+                case '+':{
+                    if(b.length===0){
+                   let a= parseInt(arr[i-1])+parseInt(arr[i+1]);
+                        b.push(a)
+                        console.log(a)
+                        display.value=a;
+                    }else{
+                    let a=parseInt(b[0])+parseInt(arr[i+1]);
+
+                        b.push(a)
+                        display.value=a;
+                    }
+                }
+                break;
+                case '-':{
+                    if(b.length===0){
+                  let  a= parseInt(arr[i-1])-parseInt(arr[i+1]);
+                        b.push(a)
+                        console.log(a)
+                        display.value=a;
+                    }else{
+                    let a=parseInt(b[0])-parseInt(arr[i+1]);
+
+                        b.push(a)
+                        display.value=a;
+                    }
+                }
+                break;
+                case '*':{
+                    if(b.length===0){
+                   let a= parseInt(arr[i-1])*parseInt(arr[i+1]);
+                        b.push(a)
+                        console.log(a)
+                        display.value=a;
+                    }else{
+                   let  a=parseInt(b[0])*parseInt(arr[i+1]);
+
+                        b.push(a)
+                        display.value=a;
+                    }
+                }
+                break;
+                case '/':{
+                    if(b.length===0){
+                    a= parseInt(arr[i-1])/parseInt(arr[i+1]);
+                        b.push(a)
+                        console.log(a)
+                        display.value=a;
+                    }else{
+                     a=parseInt(b[0])/parseInt(arr[i+1]);
+
+                        b.push(a)
+                        display.value=a;
+                    }
+                }
+                break;
+            }
+           
+        }
+        
+           
+        }
+   
        
     
         function clearfunction(){
             display.value='';
+            add=""
             
         }
     </script>
